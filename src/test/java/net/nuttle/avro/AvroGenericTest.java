@@ -12,8 +12,12 @@ import org.apache.avro.io.Decoder;
 import org.apache.avro.io.DecoderFactory;
 import org.apache.avro.io.Encoder;
 import org.apache.avro.io.EncoderFactory;
+import org.apache.log4j.Logger;
+import org.junit.Test;
 
 import net.nuttle.avro.bo.TestRecord;
+
+import static org.junit.Assert.assertEquals;
 
 /*
  * Based on code from:
@@ -23,7 +27,11 @@ import net.nuttle.avro.bo.TestRecord;
  */
 
 public class AvroTest {
-  public static void main(String[] args) throws IOException {
+  
+  private static final Logger LOG = Logger.getLogger(AvroTest.class);
+
+  @Test
+  public void testGeneric() throws IOException {
     // Schema
     String schemaDescription = " {    \n"
         + " \"name\": \"FacebookUser\", \n"
@@ -54,18 +62,17 @@ public class AvroTest {
     byte[] encodedByteArray = outputStream.toByteArray();
     String encodedString = outputStream.toString("UTF-8");
 
-    System.out.println("encodedString: "+encodedString);
+    LOG.debug("encodedString: "+encodedString);
 
     // Decode using same schema
     DatumReader<GenericRecord> reader = new GenericDatumReader<GenericRecord>(s);
     Decoder decoder = DecoderFactory.get().binaryDecoder(encodedByteArray, null);
     GenericRecord result = reader.read(null, decoder);
-    System.out.println(result.get("name").toString());
-    System.out.println(result.get("num_likes").toString());
-    System.out.println(result.get("num_groups").toString());
-    System.out.println(result.get("num_photos").toString());
+    assertEquals("Doctor Who", result.get("name").toString());
+    assertEquals(1, Integer.parseInt(result.get("num_likes").toString()));
+    assertEquals(50101, Integer.parseInt(result.get("num_groups").toString()));
+    assertEquals(12, Integer.parseInt(result.get("num_photos").toString()));
 
-    test2();
   }
  
   /**
@@ -76,7 +83,8 @@ public class AvroTest {
    * and still read the data and use the generic get method.
    * @throws IOException
    */
-  public static void test2() throws IOException {
+  @Test
+  public void test2() throws IOException {
     Schema s = TestRecord.SCHEMA$;
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     Encoder e = EncoderFactory.get().binaryEncoder(outputStream, null);
@@ -100,7 +108,7 @@ public class AvroTest {
     DatumReader<GenericRecord> reader = new GenericDatumReader<GenericRecord>(s);
     Decoder decoder = DecoderFactory.get().binaryDecoder(encodedByteArray, null);
     GenericRecord result = reader.read(null, decoder);
-    System.out.println(result.get("id").toString());
+    assertEquals(15, Integer.parseInt(result.get("id").toString()));
 
   }
 }
