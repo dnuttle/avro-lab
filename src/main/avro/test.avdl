@@ -1,0 +1,14 @@
+/*
+A simple AVDL file.  This will create a net.nuttle.avro.TestAvro class, as well as a serializable net.nuttle.avro.TestRecord class.
+*/
+@namespace("net.nuttle.avro.bo")
+protocol TestAvro {
+  @aliases(["net.nuttle.avro.OldTestRecord"])
+  record TestRecord {
+    int @aliases(["oldid"]) id;
+  }
+  record OldTestRecord {
+    int idold;
+  }
+  void upload(TestRecord r) oneway;
+}

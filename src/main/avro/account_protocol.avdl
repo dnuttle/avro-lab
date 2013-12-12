@@ -1,0 +1,12 @@
+@namespace("net.nuttle.avro.bo.account")
+protocol AvroAccountProtocol {
+  record AvroAccountRequest {
+    int id;
+  }
+  record AvroAccountResponse {
+    int id;
+    string name;
+    float balance;
+  }
+  AvroAccountResponse getBalance(AvroAccountRequest r);
+}
