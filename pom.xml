@@ -17,6 +17,12 @@
     <version.log4j>1.2.16</version.log4j>
     <version.protobuf-java>2.4.0a</version.protobuf-java>
   </properties>
+  <repositories>
+    <repository>
+      <id>cloudera</id>
+      <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>org.apache.avro</groupId>
@@ -129,5 +135,36 @@
         </executions>
       </plugin>
     </plugins>
+  <pluginManagement>
+    <plugins>
+        <!--This plugin's configuration is used to store Eclipse 
+            m2e settings only. It has no influence on the Maven build itself. -->
+        <plugin>
+            <groupId>org.eclipse.m2e</groupId>
+            <artifactId>lifecycle-mapping</artifactId>
+            <version>1.0.0</version>
+            <configuration>
+                <lifecycleMappingMetadata>
+                    <pluginExecutions>
+                        <pluginExecution>
+                            <pluginExecutionFilter>
+                                <groupId>org.apache.avro</groupId>
+                                <artifactId>avro-maven-plugin</artifactId>
+                                <versionRange>[0.0,)</versionRange>
+                                <goals>
+                                    <goal>schema</goal>
+                                    <goal>idl-protocol</goal>
+                                </goals>
+                            </pluginExecutionFilter>
+                            <action>
+                                <execute />
+                            </action>
+                        </pluginExecution>
+                    </pluginExecutions>
+                </lifecycleMappingMetadata>
+            </configuration>
+        </plugin>
+    </plugins>
+  </pluginManagement>
   </build>
 </project>

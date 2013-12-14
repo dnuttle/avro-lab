@@ -26,9 +26,9 @@ import static org.junit.Assert.assertEquals;
  * This is an example of a "generic" writer and reader, so that you don't have to have defined classes.
  */
 
-public class AvroTest {
+public class AvroGenericTest {
   
-  private static final Logger LOG = Logger.getLogger(AvroTest.class);
+  private static final Logger LOG = Logger.getLogger(AvroGenericTest.class);
 
   @Test
   public void testGeneric() throws IOException {
