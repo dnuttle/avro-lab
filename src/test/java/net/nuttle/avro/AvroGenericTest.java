@@ -31,7 +31,7 @@ public class AvroGenericTest {
   private static final Logger LOG = Logger.getLogger(AvroGenericTest.class);
 
   @Test
-  public void testGeneric() throws IOException {
+  public void testGenericFromString() throws IOException {
     // Schema
     String schemaDescription = " {    \n"
         + " \"name\": \"FacebookUser\", \n"
@@ -84,7 +84,7 @@ public class AvroGenericTest {
    * @throws IOException
    */
   @Test
-  public void test2() throws IOException {
+  public void testGenericFromString2() throws IOException {
     Schema s = TestRecord.SCHEMA$;
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     Encoder e = EncoderFactory.get().binaryEncoder(outputStream, null);

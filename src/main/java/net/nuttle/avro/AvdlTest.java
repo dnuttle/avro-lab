@@ -37,6 +37,7 @@ public class AvdlTest {
 
     private static final Logger LOG = Logger.getLogger(AvdlTest.class);
     public static void main(String[] args) {
+        LOG.debug("main");
         write(new File("test.avro"));
         read(new File("test.avro"));
     }
