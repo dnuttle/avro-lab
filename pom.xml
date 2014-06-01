@@ -56,13 +56,11 @@
       <artifactId>hadoop-common</artifactId>
       <version>${version.hadoop}</version>  
     </dependency>
-    -->
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-test</artifactId>
         <version>${version.hadoop.test}</version>
     </dependency>
-    <!-- 
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-minicluster</artifactId>
@@ -70,28 +68,15 @@
     </dependency>
     -->
     <dependency>
-      <groupId>org.apache.hbase</groupId>
-      <artifactId>hbase</artifactId>
-      <version>${version.hbase}</version>
-    </dependency>
-    <dependency>
       <groupId>org.apache.zookeeper</groupId>
       <artifactId>zookeeper</artifactId>
       <version>${version.zookeeper}</version>
     </dependency>
     <dependency>
-      <groupId>net.nuttle</groupId>
-      <artifactId>hbase-lab</artifactId>
-      <version>${version.hbase-lab}</version>
-    </dependency>
-
-    <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>11.0.2</version>
     </dependency>
-
-
     <dependency>
       <groupId>commons-lang</groupId>
       <artifactId>commons-lang</artifactId>
@@ -106,6 +91,16 @@
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>${version.commons-logging}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hbase</groupId>
+      <artifactId>hbase</artifactId>
+      <version>${version.hbase}</version>
+    </dependency>
+    <dependency>
+      <groupId>net.nuttle</groupId>
+      <artifactId>hbase-lab</artifactId>
+      <version>${version.hbase-lab}</version>
     </dependency>
     <!-- Logging -->
     <dependency>

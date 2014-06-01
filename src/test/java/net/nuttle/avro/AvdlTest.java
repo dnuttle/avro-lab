@@ -32,7 +32,6 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import net.nuttle.avro.bo.TestRecord;
-
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -41,6 +40,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class AvdlTest {
 
+    @SuppressWarnings("unused")
     private static final Logger LOG = Logger.getLogger(AvdlTest.class);
     public static final int TEST_ID = 55;
     
