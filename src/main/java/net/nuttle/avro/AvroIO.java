@@ -1,20 +1,3 @@
-/*************************************************************************
- *
- * ADOBE CONFIDENTIAL
- * __________________
- *
- *  Copyright 2012 Adobe Systems Incorporated
- *  All Rights Reserved.
- *
- * NOTICE:  All information contained herein is, and remains
- * the property of Adobe Systems Incorporated and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to Adobe Systems Incorporated and its
- * suppliers and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Adobe Systems Incorporated.
- **************************************************************************/
 package net.nuttle.avro;
 
 import java.io.File;
@@ -37,7 +20,8 @@ import org.apache.avro.specific.SpecificRecord;
  */
 public class AvroIO {
 
-    public static <T extends SpecificRecord> void write(List<T> records, Class clazz, File f) {
+    public static <T extends SpecificRecord> void write(List<T> records, Class<T> clazz, File f) 
+      throws IOException {
         if(records==null || records.size()==0) {
             return;
         }
@@ -49,27 +33,49 @@ public class AvroIO {
             for(T rec : records) {
                 writer.append(rec);
             }
-            writer.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        } finally {
+            closeQuietly(writer);
         }
     }
     
-    public static <T extends SpecificRecord> List<T> read(T record, Class clazz, File f) {
+    public static <T extends SpecificRecord> List<T> read(T record, Class<T> clazz, File f) 
+      throws IOException {
         DatumReader<T> datumReader = new SpecificDatumReader<T>(clazz);
         List<T> recs = new ArrayList<T>();
+        DataFileReader<T> fileReader = null;
         try {
-            DataFileReader<T> fileReader = new DataFileReader<T>(f, datumReader);
-            record = null;
-            while(fileReader.hasNext()) {
-                record = fileReader.next(record);
-                recs.add(record);
-                record = null;
-            }
-            fileReader.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+          fileReader = new DataFileReader<T>(f, datumReader);
+          record = null;
+          while(fileReader.hasNext()) {
+              record = fileReader.next(record);
+              recs.add(record);
+              record = null;
+          }
+        } finally {
+          closeQuietly(fileReader);
         }
         return recs;
+    }
+    
+    public static <T> void closeQuietly(DataFileReader<T> reader) {
+      if(reader==null) {
+        return;
+      }
+      try {
+        reader.close();
+      } catch (Exception e) {
+        //do nothing
+      }
+    }
+    
+    public static <T> void closeQuietly(DataFileWriter<T> writer) {
+      if(writer==null) {
+        return;
+      }
+      try {
+        writer.close();
+      } catch (Exception e) {
+        //do nothing
+      }
     }
 }
