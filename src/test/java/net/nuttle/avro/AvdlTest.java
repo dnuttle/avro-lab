@@ -1,20 +1,3 @@
-/*************************************************************************
- *
- * ADOBE CONFIDENTIAL
- * __________________
- *
- *  Copyright 2012 Adobe Systems Incorporated
- *  All Rights Reserved.
- *
- * NOTICE:  All information contained herein is, and remains
- * the property of Adobe Systems Incorporated and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to Adobe Systems Incorporated and its
- * suppliers and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Adobe Systems Incorporated.
- **************************************************************************/
 package net.nuttle.avro;
 
 import java.io.ByteArrayInputStream;
@@ -32,7 +15,6 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import net.nuttle.avro.bo.TestRecord;
-
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -41,6 +23,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class AvdlTest {
 
+    @SuppressWarnings("unused")
     private static final Logger LOG = Logger.getLogger(AvdlTest.class);
     public static final int TEST_ID = 55;
     
