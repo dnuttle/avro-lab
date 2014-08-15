@@ -29,7 +29,6 @@ public class AvroLab {
   //private static final int DATANODE_COUNT = 3;
   
   public static void main(String[] args) throws IOException {
-    AvroAccountRequestor.testNetty();
   }
   /*
   public static void startCluster()  {
