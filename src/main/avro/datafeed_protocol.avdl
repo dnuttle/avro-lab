@@ -1,0 +1,22 @@
+@namespace("net.nuttle.avro.bo.datafeed")
+protocol AvroDatafeedProtocol {
+  record AvroDatafeedLine {
+    array<string> fields;
+  }
+  record AvroDatafeedSchemaField {
+    string name;
+    string dataType;
+  }
+  record AvroDatafeedSchema {
+    array<AvroDatafeedSchemaField> fields;
+  }
+  record AvroDatafeedRequest {
+    int clientid;
+    AvroDatafeedSchema datafeedschema;
+    array<AvroDatafeedLine> lines;
+  }
+  record AvroDatafeedResponse {
+    int responseCode;
+  }
+  AvroDatafeedResponse getResult(AvroDatafeedRequest r);
+}

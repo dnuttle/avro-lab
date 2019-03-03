@@ -7,7 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import net.nuttle.avro.json.JsonSchemas;
-import net.nuttle.hbase.HBaseLab;
+//import net.nuttle.hbase.HBaseLab;
 
 import org.apache.avro.Schema;
 import org.apache.avro.Schema.Parser;
@@ -20,6 +20,7 @@ import org.apache.avro.io.DatumReader;
 import org.apache.avro.io.DecoderFactory;
 import org.apache.avro.io.Encoder;
 import org.apache.avro.io.EncoderFactory;
+/*
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.Get;
@@ -30,9 +31,15 @@ import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-
+*/
+/**
+ * All commented out for now; this really shouldn't drag an hbase dependency into an avro lab.
+ * Maybe need another project that is a combined hbase-avro lab.
+ * @author dnuttle
+ *
+ */
 public class AvroLabHBaseTest {
-
+/*
   private static final Logger LOG = Logger.getLogger(AvroLabHBaseTest.class);
   private static final Configuration CONF = HBaseConfiguration.create();
   private static HTablePool pool = null;
@@ -46,7 +53,7 @@ public class AvroLabHBaseTest {
     boolean s = HBaseLab.isTableAvailable(CONF, AVRO_TABLE);
     LOG.debug("Found table: " + s);
   }
-  
+*/  
   /**
    * Writes a generic record, based on a JSON schema, to HBase,
    * reads it back, confirms that values are correct.
@@ -54,6 +61,7 @@ public class AvroLabHBaseTest {
    * creating a zombie avro_table.
    * @throws Exception
    */
+/*
   @Test
   public void test() throws Exception {
     String key = "ABCD";
@@ -109,4 +117,5 @@ public class AvroLabHBaseTest {
     }
     return pool;
   }
+  */
 }

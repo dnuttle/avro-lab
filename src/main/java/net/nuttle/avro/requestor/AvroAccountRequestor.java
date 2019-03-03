@@ -17,7 +17,7 @@ import net.nuttle.avro.bo.account.AvroAccountResponse;
  */
 public class AvroAccountRequestor {
   
-  private static NettyServer server= new NettyServer(new SpecificResponder(AvroAccountProtocol.class, new AvroAccountImpl()), new InetSocketAddress(7001));
+  //private static NettyServer server= new NettyServer(new SpecificResponder(AvroAccountProtocol.class, new AvroAccountImpl()), new InetSocketAddress(7001));
   
   public static class AvroAccountImpl implements AvroAccountProtocol {
     public AvroAccountResponse getBalance(AvroAccountRequest req) {

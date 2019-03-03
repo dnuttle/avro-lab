@@ -7,11 +7,11 @@ import org.apache.avro.ipc.NettyServer;
 import org.apache.avro.ipc.NettyTransceiver;
 import org.apache.avro.ipc.specific.SpecificRequestor;
 import org.apache.avro.ipc.specific.SpecificResponder;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import net.nuttle.avro.requestor.AvroAccountRequestor.AvroAccountImpl;
-
 import net.nuttle.avro.bo.account.AvroAccountProtocol;
 import net.nuttle.avro.bo.account.AvroAccountRequest;
 import net.nuttle.avro.bo.account.AvroAccountResponse;
@@ -25,6 +25,10 @@ public class AvroAccountRequestorTest {
   @Before
   public void setUp() {
     server = new NettyServer(new SpecificResponder(AvroAccountProtocol.class, new AvroAccountImpl()), new InetSocketAddress(7001));
+  }
+  @After
+  public void tearDown() {
+	  server.close();
   }
   
   @Test

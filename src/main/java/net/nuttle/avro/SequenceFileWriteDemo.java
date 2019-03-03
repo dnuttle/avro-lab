@@ -2,7 +2,7 @@ package net.nuttle.avro;
 
 import java.io.IOException;
 import java.net.URI;
-
+/*
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -10,7 +10,7 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.IOUtils;
-
+*/
 /**
  *
  */
@@ -21,6 +21,7 @@ public class SequenceFileWriteDemo {
     "Seven, eight, lay them straight", 
     "Nine, ten, a big fat hen" };
 
+	/* Commenting all out for now. Don't want to drag hdfs into avro-lab. Is it possible to write sequence file to local fs?
   public static void main( String[] args) throws IOException { 
     //String uri = args[0]; 
     String uri = "/users/dnuttle/test.seq";
@@ -42,4 +43,5 @@ public class SequenceFileWriteDemo {
       IOUtils.closeStream( writer); 
     } 
   }
+  */
 }
